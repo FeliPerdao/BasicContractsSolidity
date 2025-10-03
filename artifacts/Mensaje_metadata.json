@@ -1,0 +1,89 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "mensaje",
+						"type": "string"
+					}
+				],
+				"name": "Mensaje_MensajeActualizado",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "getMensaje",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "mensaje_",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_mensaje",
+						"type": "string"
+					}
+				],
+				"name": "setMensaje",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "FeliPerdao",
+			"custom:security": "Este contrato es educativo y no debe ser usado con fines productivos",
+			"kind": "dev",
+			"methods": {},
+			"title": "Contrato Mensaje",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Este contrato es mi primer proyecto del ethkipu",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Mensaje.sol": "Mensaje"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Mensaje.sol": {
+			"keccak256": "0xe0a474ed3e1bef450d1e1de4eb858c559f3ef6680d1ce9f26f420a76dbff7bf5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d01ebd1d83f43d4a61ccb1741a845a948bfc7aadbb1651f5e920b2a058a02050",
+				"dweb:/ipfs/QmSPYqKPv284SdTWqAiNHnKjYMQiGBe1Xwi7kZAnZuz7tE"
+			]
+		}
+	},
+	"version": 1
+}
