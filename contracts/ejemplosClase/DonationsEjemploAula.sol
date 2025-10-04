@@ -9,50 +9,28 @@ pragma solidity > 0.8.0;
  */
 
 contract Donations {
-
-	/*///////////////////////
-			Variables
-	///////////////////////*/
-
+    
     ///@notice variable inmutable para almacenar la dirección que debe retirar las donacionese
-    address immutable public i_beneficiario; //immutable solo modifica variable en el constructor
+    address immutable public BENEFICIARY; //immutable solo modifica variable en el constructor
 
     ///@notice mapping para almacenar el valor donado por el usuario
-    mapping (address user => uint256 value) public s_donations;
-
-	/*///////////////////////
-			Events
-	///////////////////////*/
-    ///@notice evento emitido cuando se realiza una nueva donación
+    address constant public BENEFICIARY2 = address(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
+    mapping (address  => uint256) public donations;
+    
     event DonationReceived(address sender, uint256 amount);
-    ///@notice evento emitido cuando se realiza un retiro
-    event WithdrawalPerformed(address recipient, uint256 amount);
-	
-    /*///////////////////////
-			Errors
-	///////////////////////*/
-    ///@notice error emitido cuando falla una transacción
+    event WithdrawalPerformed(address BENEFICIEARY, uint256 amount);
+    
     error TransactionFailed(bytes reason);
-    ///@notice error emitido cuando una dirección diferente al beneficiario intenta retirar
-    error UnauthorizedWithdrawer(address caller, address beneficiary);
+    error UnauthorizedWithdrawer(address caller, address BENEFICIEARY);
 
-    /*///////////////////////
-			Functions
-	///////////////////////*/
-    constructor(address _beneficiary) {
-        i_beneficiario = _beneficiary;
-    }
-
-    ///@notice función para recibir ether directamente
-    receive() external payable{}
-    fallback() external{}
-
-///
     modifier onlyBeneficiary() {
         if (msg.sender != BENEFICIARY) revert UnauthorizedWithdrawer(msg.sender, BENEFICIARY);
         _;
     }
 
+    constructor(address _beneficiary) {
+        BENEFICIARY = _beneficiary;
+    }
 
     receive() external payable {
         donations[msg.sender] += msg.value;
